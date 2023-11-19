@@ -1,0 +1,47 @@
+h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.formContact {
+  margin-bottom: 24px;
+  font-size: 1.2rem;
+}
+
+.labelInputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 8px;
+  margin-bottom: 12px;
+}
+
+.labelInputs input {
+  border: 1px solid #242424;
+  color: #242424;
+  outline: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  max-width: 50%;
+  min-width: 300px;
+}
+
+.labelInputs input:focus {
+  box-shadow: inset 0 0 10px 0px #00ff00;
+}
+
+.addContact {
+  border: none;
+  border-radius: 10px;
+  background: #ffff00;
+  cursor: pointer;
+  padding: 3px 10px;
+  display: block;
+  margin: auto;
+}
+
+.addContact:active {
+  transform: scale(0.9);
+  box-shadow: inset 0 0 10px 0 #00ff00;
+}
