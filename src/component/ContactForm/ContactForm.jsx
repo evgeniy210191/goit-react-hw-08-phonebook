@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNewContact } from 'redux/reducer';
-import { nanoid } from '@reduxjs/toolkit';
-import { slectContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/selectors';
 import css from './ContactForm.module.css';
+import { addContact } from 'redux/thunc';
 function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const contacts = useSelector(slectContacts);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const onSubmit = event => {
@@ -19,13 +18,12 @@ function ContactForm() {
       return;
     }
     const newContact = {
-      id: nanoid(),
       name: name.value,
       number: number.value,
     };
+    dispatch(addContact(newContact));
     setName('');
     setNumber('');
-    return dispatch(addNewContact(newContact));
   };
 
   const hendleChange = event => {

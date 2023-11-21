@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { filtered } from 'redux/reducer';
-import { slectFilter } from 'redux/selectors';
+import { filtered } from 'redux/createSliceContacts';
+import { selectFilter } from 'redux/selectors';
 import css from './Filter.module.css';
 
 function Filter() {
   const dispatch = useDispatch();
-  const filter = useSelector(slectFilter);
+  const filter = useSelector(selectFilter);
   const hendleChange = event => {
     dispatch(filtered(event.target.value));
   };

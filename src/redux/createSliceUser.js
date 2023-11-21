@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { initialStates } from './initialState';
 import { logIn, logOut, signUp, update } from './thunc';
 
@@ -7,8 +7,11 @@ const hendleFulfilled = (state, { payload }) => {
   state.isLoggedIn = true;
   state.token = payload.token;
 };
-
+const hendleUpdatePending = state => {
+  state.isRerendung = true;
+};
 const hendleUpdateFulfilled = (state, { payload }) => {
+  state.isRerendung = false;
   if (!payload) {
     return;
   }
@@ -29,13 +32,18 @@ export const usersOperation = createSlice({
   initialState: initialStates.users,
   extraReducers: builder => {
     builder
-      .addCase(signUp.fulfilled, hendleFulfilled)
-      .addCase(signUp.rejected, hendleRejected)
-      .addCase(logIn.fulfilled, hendleFulfilled)
-      .addCase(logIn.rejected, hendleRejected)
+      .addCase(update.pending, hendleUpdatePending)
       .addCase(update.fulfilled, hendleUpdateFulfilled)
-      .addCase(update.rejected, hendleRejected)
       .addCase(logOut.fulfilled, hendleLogOutFulfilled)
-      .addCase(logOut.rejected, hendleRejected);
+      .addMatcher(isAnyOf(signUp.fulfilled, logIn.fulfilled), hendleFulfilled)
+      .addMatcher(
+        isAnyOf(
+          signUp.rejected,
+          logIn.rejected,
+          update.rejected,
+          logOut.rejected
+        ),
+        hendleRejected
+      );
   },
 });

@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { contactSlise, filterSlice } from './reducer';
+import { contactSlise, filterSlice } from './createSliceContacts';
 import {
   persistStore,
   persistReducer,
@@ -11,7 +11,7 @@ import {
   FLUSH,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { usersOperation } from './createSlice';
+import { usersOperation } from './createSliceUser';
 
 const persistConfig = {
   key: 'token',
@@ -25,9 +25,8 @@ const reducer = combineReducers({
   users: persistReducer(persistConfig, usersOperation.reducer),
 });
 
-const persistedReducer = persistReducer(persistConfig, reducer);
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: reducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {

@@ -1,7 +1,11 @@
 .accessLink {
   border-radius: 10px;
   padding: 5px 15px;
-  background: #ffff00;
+  background: #00ffff;
   text-decoration: none;
   color: #242424
+}
+
+.accessLink.active {
+  background: #ffff00;
 }

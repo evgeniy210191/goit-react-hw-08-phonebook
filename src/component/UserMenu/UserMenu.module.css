@@ -1,6 +1,8 @@
 .btnLogout {
   border-radius: 10px;
+  border: none;
+  padding: 5px 15px;
   background: #ffff00;
-  padding: 3px 10px;
+  color: #242424;
   cursor: pointer;
 }

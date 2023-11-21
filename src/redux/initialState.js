@@ -5,5 +5,6 @@ export const initialStates = {
     user: { name: '', email: '' },
     token: null,
     isLoggedIn: false,
+    isRerendung: false,
   },
 };

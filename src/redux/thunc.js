@@ -56,3 +56,40 @@ export const update = createAsyncThunk('user/update', async (_, thuncApi) => {
     console.log(error.message);
   }
 });
+
+export const addContact = createAsyncThunk(
+  'contacts/addContact',
+  async (contacts, thuncApi) => {
+    try {
+      const { data } = await axios.post('/contacts', contacts);
+      const storThunc = thuncApi.getState();
+      const presentToken = storThunc.users.token;
+      token.set(presentToken);
+      return data;
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+);
+
+export const getContact = createAsyncThunk(
+  'contacts/getContact',
+  async (_, thuncApi) => {
+    const { data } = await axios.get('/contacts');
+    const storThunc = thuncApi.getState();
+    const presentToken = storThunc.users.token;
+    token.set(presentToken);
+    return data;
+  }
+);
+
+export const delContact = createAsyncThunk(
+  'contacts/delContact',
+  async (contactId, thuncApi) => {
+    const { data } = await axios.delete(`/contacts/${contactId}`);
+    const storThunc = thuncApi.getState();
+    const presentToken = storThunc.users.token;
+    token.set(presentToken);
+    return data;
+  }
+);

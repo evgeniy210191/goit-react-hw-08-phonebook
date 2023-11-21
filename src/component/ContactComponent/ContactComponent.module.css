@@ -16,11 +16,12 @@
   }
 
   .addContact {
-    order: none;
-    border-radius: 5px;
+    border-radius: 10px;
+    border: none;
+    padding: 5px 15px;
     background: #ffff00;
+    color: #242424;
     cursor: pointer;
-    padding: 3px 10px;
   }
 
   .addContact:active {
