@@ -20,9 +20,9 @@ const persistConfig = {
 };
 
 const reducer = combineReducers({
+  users: persistReducer(persistConfig, usersOperation.reducer),
   contacts: contactSlise.reducer,
   filter: filterSlice.reducer,
-  users: persistReducer(persistConfig, usersOperation.reducer),
 });
 
 export const store = configureStore({

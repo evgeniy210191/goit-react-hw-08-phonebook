@@ -17,8 +17,7 @@ function App() {
   const isLogIn = useSelector(isLoggedIn);
   useEffect(() => {
     dispatch(update());
-    isLogIn && dispatch(getContact());
-  }, [dispatch, isLogIn]);
+  }, [dispatch]);
   return (
     !isRerendung && (
       <Routes>

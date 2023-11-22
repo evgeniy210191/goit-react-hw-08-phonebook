@@ -3,7 +3,7 @@ import { initialStates } from './initialState';
 import { addContact, delContact, getContact } from './thunc';
 
 const hendleGetContactThuncFulfilled = (state, { payload }) => {
-  console.log(payload);
+  console.log('contact/Fulfilled', payload);
   return (state = payload);
 };
 const hendleAddContactThuncFulfilled = (state, { payload }) => {
@@ -11,7 +11,11 @@ const hendleAddContactThuncFulfilled = (state, { payload }) => {
   return [payload, ...state];
 };
 const hendleThuncRejected = (state, { payload }) => {
-  console.log(payload);
+  console.log('contact/reject', payload);
+  return state;
+};
+const hendleGetThuncRejected = (state, { payload }) => {
+  console.log('contact/Getreject', payload);
   return state;
 };
 
@@ -26,10 +30,8 @@ export const contactSlise = createSlice({
       .addCase(getContact.fulfilled, hendleGetContactThuncFulfilled)
       .addCase(addContact.fulfilled, hendleAddContactThuncFulfilled)
       .addCase(delContact.fulfilled, hendleDeleteContactThuncFulfilled)
-      .addMatcher(
-        isAnyOf(addContact, getContact, delContact),
-        hendleThuncRejected
-      );
+      .addCase(getContact.rejected, hendleGetThuncRejected)
+      .addMatcher(isAnyOf(addContact, delContact), hendleThuncRejected);
   },
 });
 

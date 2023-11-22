@@ -21,15 +21,21 @@ export const signUp = createAsyncThunk('user/addUser', async user => {
   }
 });
 
-export const logIn = createAsyncThunk('user/enterUser', async user => {
-  try {
-    const { data } = await axios.post('/users/login', user);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    console.log(error.message);
+export const logIn = createAsyncThunk(
+  'user/enterUser',
+  async (user, { dispatch }) => {
+    try {
+      const { data } = await axios.post('/users/login', user);
+
+      dispatch(getContact());
+
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      console.log(error.message);
+    }
   }
-});
+);
 
 export const logOut = createAsyncThunk('user/exitUser', async () => {
   try {
@@ -60,6 +66,7 @@ export const update = createAsyncThunk('user/update', async (_, thuncApi) => {
 export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (contacts, thuncApi) => {
+    console.log(thuncApi.getState());
     try {
       const { data } = await axios.post('/contacts', contacts);
       const storThunc = thuncApi.getState();
@@ -76,6 +83,7 @@ export const getContact = createAsyncThunk(
   'contacts/getContact',
   async (_, thuncApi) => {
     const { data } = await axios.get('/contacts');
+    console.log('data', data);
     const storThunc = thuncApi.getState();
     const presentToken = storThunc.users.token;
     token.set(presentToken);

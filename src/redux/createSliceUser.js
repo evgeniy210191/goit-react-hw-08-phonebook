@@ -24,7 +24,7 @@ const hendleLogOutFulfilled = state => {
   state.isLoggedIn = false;
 };
 const hendleRejected = (state, action) => {
-  console.log(action);
+  console.log('user', action);
 };
 
 export const usersOperation = createSlice({

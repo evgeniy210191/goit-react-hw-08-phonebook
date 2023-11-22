@@ -31,7 +31,7 @@ function LoginComponent() {
       password,
     };
     dispatch(logIn(user));
-    dispatch(getContact());
+    // dispatch(getContact());
     setEmail('');
     setPassword('');
   };
