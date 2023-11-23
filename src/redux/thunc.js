@@ -47,12 +47,12 @@ export const logOut = createAsyncThunk('user/exitUser', async () => {
 export const update = createAsyncThunk('user/update', async (_, thuncApi) => {
   const storThunc = thuncApi.getState();
   const presentToken = storThunc.users.token;
-
   token.set(presentToken);
 
   if (presentToken === null) {
     return;
   }
+  thuncApi.dispatch(getContact());
   try {
     const { data } = await axios.get('/users/current');
     return data;

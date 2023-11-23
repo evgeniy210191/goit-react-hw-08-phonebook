@@ -3,11 +3,9 @@ import { initialStates } from './initialState';
 import { addContact, delContact, getContact } from './thunc';
 
 const hendleGetContactThuncFulfilled = (state, { payload }) => {
-  console.log('contact/Fulfilled', payload);
   return (state = payload);
 };
 const hendleAddContactThuncFulfilled = (state, { payload }) => {
-  console.log(payload);
   return [payload, ...state];
 };
 
