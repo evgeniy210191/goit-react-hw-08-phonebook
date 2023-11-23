@@ -6,15 +6,14 @@ import Contacts from 'pages/Contacts';
 import Home from 'pages/Home';
 import Layout from 'component/Layout/Layout';
 import { useEffect } from 'react';
-import { getContact, update } from 'redux/thunc';
+import { update } from 'redux/thunc';
 import PrivateRoute from 'component/PrivateRoute/PrivateRoute';
 import PublicRoute from 'component/PablicRoute/PublicRoute';
-import { isLoggedIn, selectisRerendung } from 'redux/selectors';
+import { selectisRerendung } from 'redux/selectors';
 
 function App() {
   const dispatch = useDispatch();
   const isRerendung = useSelector(selectisRerendung);
-  const isLogIn = useSelector(isLoggedIn);
   useEffect(() => {
     dispatch(update());
   }, [dispatch]);
