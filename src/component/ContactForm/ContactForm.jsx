@@ -37,7 +37,7 @@ function ContactForm() {
           .min(11, 'must be more characters then 10')
           .required(),
       })}
-      onSubmit={values => {
+      onSubmit={(values, actions) => {
         if (
           contacts.find(namePhonsbooks => namePhonsbooks.name === values.name)
         ) {
@@ -47,8 +47,7 @@ function ContactForm() {
         }
 
         dispatch(addContact(values));
-        values.name = '';
-        values.number = '';
+        actions.resetForm();
       }}
     >
       {formik => (
@@ -64,7 +63,6 @@ function ContactForm() {
                 mb="10px"
                 value={formik.values.name}
                 onChange={formik.handleChange}
-                onReset={formik.handleReset}
                 isInvalid={formik.errors.name}
                 errorBorderColor="red.500"
                 type="text"
@@ -76,7 +74,6 @@ function ContactForm() {
                 value={formik.values.number}
                 isInvalid={formik.errors.number}
                 onChange={formik.handleChange}
-                onReset={formik.handleReset}
                 errorBorderColor="red.500"
                 type="tel"
                 name="number"

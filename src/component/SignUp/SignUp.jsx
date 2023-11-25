@@ -43,11 +43,9 @@ function SignUp() {
           .min(8, 'must be more characters then 7')
           .required(),
       })}
-      onSubmit={values => {
+      onSubmit={(values, actions) => {
         dispatch(signUp(values));
-        values.name = '';
-        values.email = '';
-        values.password = '';
+        actions.resetForm();
       }}
     >
       {formik => (

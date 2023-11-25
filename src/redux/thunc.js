@@ -49,7 +49,6 @@ export const update = createAsyncThunk('user/update', async (_, thuncApi) => {
   const presentToken = storThunc.users.token;
 
   if (!presentToken) {
-    console.log('update');
     thuncApi.dispatch(getContact());
 
     try {
@@ -57,6 +56,9 @@ export const update = createAsyncThunk('user/update', async (_, thuncApi) => {
       token.set(presentToken);
       return data;
     } catch (error) {
+      console.log(
+        'Не розумію, чому спрацьовує ця помилка при завантаженні сторінки'
+      );
       console.log(error.message);
     }
   }

@@ -56,7 +56,6 @@ function LoginComponent() {
                 isInvalid={formik.errors.email}
                 onFocus={formik.handleBlur}
                 onChange={formik.handleChange}
-                onReset={formik.handleReset}
                 errorBorderColor="red.500"
                 type="email"
                 name="email"
@@ -78,7 +77,6 @@ function LoginComponent() {
                 type={show ? 'text' : 'password'}
                 errorBorderColor="red.500"
                 isInvalid={formik.errors.password}
-                onReset={formik.handleReset}
                 placeholder="Enter password"
                 value={formik.values.password}
                 onChange={formik.handleChange}
