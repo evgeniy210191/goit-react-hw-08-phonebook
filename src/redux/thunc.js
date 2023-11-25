@@ -48,7 +48,8 @@ export const update = createAsyncThunk('user/update', async (_, thuncApi) => {
   const storThunc = thuncApi.getState();
   const presentToken = storThunc.users.token;
 
-  if (presentToken !== null) {
+  if (!presentToken) {
+    console.log('update');
     thuncApi.dispatch(getContact());
 
     try {
