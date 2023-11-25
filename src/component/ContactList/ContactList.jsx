@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilteredContact } from 'redux/selectors';
-import css from './ContactList.module.css';
 import ContactComponent from 'component/ContactComponent/ContactComponent';
 import { delContact } from 'redux/thunc';
+import { UnorderedList } from '@chakra-ui/react';
 
 function ContactList() {
   const filteredContacts = useSelector(selectFilteredContact);
@@ -12,7 +12,7 @@ function ContactList() {
   };
 
   return (
-    <ul className={css.contactsContainer}>
+    <UnorderedList w="600px">
       {filteredContacts.map(({ id, name, number }) => {
         return (
           <ContactComponent
@@ -24,7 +24,7 @@ function ContactList() {
           />
         );
       })}
-    </ul>
+    </UnorderedList>
   );
 }
 

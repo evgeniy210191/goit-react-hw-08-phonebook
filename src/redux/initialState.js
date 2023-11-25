@@ -6,5 +6,7 @@ export const initialStates = {
     token: null,
     isLoggedIn: false,
     isRerendung: false,
+    isLoading: false,
+    isSignup: false,
   },
 };

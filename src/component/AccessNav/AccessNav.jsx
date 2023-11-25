@@ -1,18 +1,32 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import css from './AccessNav.module.css';
-function isActive({ isActive }) {
-  return isActive ? `${css.accessLink} ${css.active}` : `${css.accessLink}`;
-}
+import { NavLink as ReactRouterLink } from 'react-router-dom';
+import { Link as ChakraLink } from '@chakra-ui/react';
+
 function AccessNav() {
   return (
     <>
-      <NavLink className={isActive} to="/register">
+      <ChakraLink
+        to="/register"
+        as={ReactRouterLink}
+        _activeLink={{ bgColor: 'yellow.100' }}
+        borderRadius="7px"
+        py="5px"
+        px="15px"
+        fontWeight="600"
+      >
         Sign up
-      </NavLink>
-      <NavLink className={isActive} to="/login">
+      </ChakraLink>
+      <ChakraLink
+        to="/login"
+        as={ReactRouterLink}
+        _activeLink={{ bgColor: 'yellow.100' }}
+        borderRadius="7px"
+        py="5px"
+        px="15px"
+        fontWeight="600"
+      >
         Log in
-      </NavLink>
+      </ChakraLink>
     </>
   );
 }

@@ -1,19 +1,28 @@
 import PropTypes from 'prop-types';
-import css from './ContactComponent.module.css';
+import { Box, Button, ListItem } from '@chakra-ui/react';
 function ContactComponent({ id, name, number, deleteContact }) {
   return (
-    <li className={css.listContacts}>
-      <p className={css.contact}>
-        {name}: {number}
-      </p>
-      <button
-        className={css.addContact}
-        type="button"
+    <ListItem
+      display="flex"
+      justifyContent="space-between"
+      alignItems="center"
+      py="2"
+    >
+      <Box>
+        ❄ {name}: {number}
+      </Box>
+      <Button
+        colorScheme="yellow"
+        bgColor="yellow.100"
         onClick={() => deleteContact(id)}
+        type="button"
+        py="5px"
+        px="15px"
+        h="auto"
       >
         delete
-      </button>
-    </li>
+      </Button>
+    </ListItem>
   );
 }
 

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
-import css from './UserMenu.module.css';
 import { logOut } from 'redux/thunc';
 import { selectUserName } from 'redux/selectors';
+import { Box, Button } from '@chakra-ui/react';
 function UserMenu(props) {
   const userName = useSelector(selectUserName);
   const dispatch = useDispatch();
@@ -10,10 +10,19 @@ function UserMenu(props) {
   };
   return (
     <>
-      <p className={css.userail}>{userName}</p>
-      <button type="button" className={css.btnLogout} onClick={userLogOut}>
+      <Box>{userName}</Box>
+      <Button
+        colorScheme="yellow"
+        bgColor="yellow.100"
+        type="button"
+        py="5px"
+        px="15px"
+        h="auto"
+        lineHeight="24px"
+        onClick={userLogOut}
+      >
         Logout
-      </button>
+      </Button>
     </>
   );
 }
