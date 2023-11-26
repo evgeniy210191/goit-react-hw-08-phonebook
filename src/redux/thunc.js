@@ -48,12 +48,10 @@ export const update = createAsyncThunk('user/update', async (_, thuncApi) => {
   const storThunc = thuncApi.getState();
   const presentToken = storThunc.users.token;
 
-  if (!presentToken) {
-    thuncApi.dispatch(getContact());
-
+  if (presentToken) {
     try {
-      const { data } = await axios.get('/users/current');
       token.set(presentToken);
+      const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
       console.log(
