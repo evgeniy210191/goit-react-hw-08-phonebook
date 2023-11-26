@@ -13,15 +13,21 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  ScaleFade,
   Spinner,
+  useDisclosure,
 } from '@chakra-ui/react';
 import { selectIsLoading, selectIsSignup } from 'redux/selectors';
+import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isLoading = useSelector(selectIsLoading);
   const isSignup = useSelector(selectIsSignup);
   const [show, setShow] = React.useState(false);
+  const { isOpen, onToggle } = useDisclosure();
+
   const handleClick = () => setShow(!show);
   return (
     <Formik
@@ -45,6 +51,8 @@ function SignUp() {
       })}
       onSubmit={(values, actions) => {
         dispatch(signUp(values));
+        onToggle();
+        setTimeout(() => navigate('/login'), 2000);
         actions.resetForm();
       }}
     >
@@ -107,7 +115,6 @@ function SignUp() {
                 type={show ? 'text' : 'password'}
                 errorBorderColor="red.500"
                 isInvalid={formik.errors.password}
-                // onReset={formik.handleReset}
                 placeholder="Enter password"
                 value={formik.values.password}
                 onChange={formik.handleChange}
@@ -134,25 +141,27 @@ function SignUp() {
             </Button>
           </Form>
           {isSignup && (
-            <Alert
-              status="success"
-              variant="subtle"
-              flexDirection="column"
-              alignItems="center"
-              justifyContent="center"
-              textAlign="center"
-              height="200px"
-              width="500px"
-              borderRadius="7px"
-            >
-              <AlertIcon boxSize="40px" mr={0} />
-              <AlertTitle mt={4} mb={1} fontSize="lg">
-                You sig up!
-              </AlertTitle>
-              <AlertDescription maxWidth="sm">
-                Thanks. Go to the "log in" to authorize
-              </AlertDescription>
-            </Alert>
+            <ScaleFade initialScale={0.9} in={isOpen}>
+              <Alert
+                status="success"
+                variant="subtle"
+                flexDirection="column"
+                alignItems="center"
+                justifyContent="center"
+                textAlign="center"
+                height="200px"
+                width="500px"
+                borderRadius="7px"
+              >
+                <AlertIcon boxSize="40px" mr={0} />
+                <AlertTitle mt={4} mb={1} fontSize="lg">
+                  You sig up!
+                </AlertTitle>
+                <AlertDescription maxWidth="sm">
+                  Thanks. Go to the "log in" to authorize
+                </AlertDescription>
+              </Alert>
+            </ScaleFade>
           )}
         </Center>
       )}
