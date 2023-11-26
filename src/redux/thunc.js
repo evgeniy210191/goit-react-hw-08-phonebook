@@ -54,9 +54,7 @@ export const update = createAsyncThunk('user/update', async (_, thuncApi) => {
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
-      console.log(
-        'Не розумію, чому спрацьовує ця помилка при завантаженні сторінки. Оновлено'
-      );
+      console.log();
       console.log(error.message);
     }
   }

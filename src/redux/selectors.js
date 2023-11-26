@@ -3,7 +3,7 @@ import { createSelector } from '@reduxjs/toolkit';
 export const selectContacts = state => state.contacts;
 export const selectFilter = state => state.filter;
 export const isLoggedIn = state => state.users.isLoggedIn;
-export const selectUserName = state => state.users.user.email;
+export const selectUserName = state => state.users.user?.email;
 export const selectisRerendung = state => state.users.isRerendung;
 export const selectIsLoading = state => state.users.isLoading;
 export const selectIsSignup = state => state.users.isSignup;
