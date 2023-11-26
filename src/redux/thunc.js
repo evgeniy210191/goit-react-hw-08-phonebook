@@ -62,6 +62,7 @@ export const update = createAsyncThunk('user/update', async (_, thuncApi) => {
       console.log(error.message);
     }
   }
+  return;
 });
 
 export const addContact = createAsyncThunk(
