@@ -55,7 +55,7 @@ export const update = createAsyncThunk('user/update', async (_, thuncApi) => {
       return data;
     } catch (error) {
       console.log(
-        'Не розумію, чому спрацьовує ця помилка при завантаженні сторінки'
+        'Не розумію, чому спрацьовує ця помилка при завантаженні сторінки. Оновлено'
       );
       console.log(error.message);
     }
