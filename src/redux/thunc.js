@@ -54,7 +54,6 @@ export const update = createAsyncThunk('user/update', async (_, thuncApi) => {
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
-      console.log();
       console.log(error.message);
     }
   }
