@@ -26,9 +26,9 @@ const hendleUpdatePending = state => {
 
 const hendleUpdateFulfilled = (state, { payload }) => {
   state.isRerendung = false;
-  // if (!payload) {
-  //   return;
-  // }
+  if (!payload) {
+    return;
+  }
   state.user = payload;
   state.isLoggedIn = true;
 };
