@@ -25,6 +25,7 @@ function App() {
   return (
     !isRerendung && (
       <Routes>
+        {console.log('render')}
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route
