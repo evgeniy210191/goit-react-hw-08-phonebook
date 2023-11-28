@@ -58,7 +58,6 @@ export const update = createAsyncThunk('user/update', async (_, thuncApi) => {
     try {
       token.set(presentToken);
       const { data } = await privatInstans.get('/users/current');
-      thuncApi.dispatch(getContact());
       return data;
     } catch (error) {
       console.log(error.message);

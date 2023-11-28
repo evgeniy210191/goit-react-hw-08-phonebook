@@ -6,7 +6,7 @@ import Contacts from 'pages/Contacts';
 import Home from 'pages/Home';
 import Layout from 'component/Layout/Layout';
 import { useEffect } from 'react';
-import { update } from 'redux/thunc';
+import { getContact, update } from 'redux/thunc';
 import PrivateRoute from 'component/PrivateRoute/PrivateRoute';
 import PublicRoute from 'component/PablicRoute/PublicRoute';
 import { selectAccessToken, selectisRerendung } from 'redux/selectors';
@@ -19,8 +19,8 @@ function App() {
     if (!accessToken) {
       return;
     }
-
     dispatch(update());
+    dispatch(getContact());
   }, [accessToken, dispatch]);
   return (
     !isRerendung && (
