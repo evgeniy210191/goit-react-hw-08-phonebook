@@ -7,6 +7,5 @@ export const initialStates = {
     isLoggedIn: false,
     isRerendung: false,
     isLoading: false,
-    isSignup: false,
   },
 };

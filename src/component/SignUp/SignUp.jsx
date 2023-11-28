@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { signUp } from 'redux/thunc';
@@ -17,15 +17,14 @@ import {
   Spinner,
   useDisclosure,
 } from '@chakra-ui/react';
-import { selectIsLoading, selectIsSignup } from 'redux/selectors';
+import { selectIsLoading } from 'redux/selectors';
 import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoading = useSelector(selectIsLoading);
-  const isSignup = useSelector(selectIsSignup);
-  const [show, setShow] = React.useState(false);
+  const [show, setShow] = useState(false);
   const { isOpen, onToggle } = useDisclosure();
 
   const handleClick = () => setShow(!show);
@@ -140,7 +139,7 @@ function SignUp() {
               sig up
             </Button>
           </Form>
-          {isSignup && (
+          {!isLoading && (
             <ScaleFade initialScale={0.9} in={isOpen}>
               <Alert
                 status="success"

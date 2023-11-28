@@ -2,11 +2,11 @@ import { NavLink as ReactRouterLink } from 'react-router-dom';
 import UserMenu from 'component/UserMenu/UserMenu';
 import AccessNav from 'component/AccessNav/AccessNav';
 import { useSelector } from 'react-redux';
-import { isLoggedIn } from 'redux/selectors';
+import { selectAccessToken } from 'redux/selectors';
 import { Box, Link as ChakraLink } from '@chakra-ui/react';
 
 function Header() {
-  const loggedIn = useSelector(isLoggedIn);
+  const accessToken = useSelector(selectAccessToken);
 
   return (
     <Box
@@ -33,7 +33,7 @@ function Header() {
         >
           Home
         </ChakraLink>
-        {loggedIn && (
+        {accessToken && (
           <ChakraLink
             as={ReactRouterLink}
             to="/contacts"
@@ -54,7 +54,7 @@ function Header() {
         gap="20px"
         mr="20px"
       >
-        {loggedIn ? <UserMenu /> : <AccessNav />}
+        {accessToken ? <UserMenu /> : <AccessNav />}
       </Box>
     </Box>
   );

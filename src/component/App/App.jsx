@@ -9,14 +9,19 @@ import { useEffect } from 'react';
 import { update } from 'redux/thunc';
 import PrivateRoute from 'component/PrivateRoute/PrivateRoute';
 import PublicRoute from 'component/PablicRoute/PublicRoute';
-import { selectisRerendung } from 'redux/selectors';
+import { selectAccessToken, selectisRerendung } from 'redux/selectors';
 
 function App() {
   const dispatch = useDispatch();
   const isRerendung = useSelector(selectisRerendung);
+  const accessToken = useSelector(selectAccessToken);
   useEffect(() => {
+    if (!accessToken) {
+      return;
+    }
+
     dispatch(update());
-  }, [dispatch]);
+  }, [accessToken, dispatch]);
   return (
     !isRerendung && (
       <Routes>

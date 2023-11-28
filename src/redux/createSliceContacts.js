@@ -18,11 +18,11 @@ const hendleGetThuncRejected = (state, { payload }) => {
   return state;
 };
 
-const hendleAddThuncRejected = (state, { payload }) => {
+const hendleAddThuncRejected = (_, { payload }) => {
   console.log(console.log('contact/Addreject', payload));
 };
 
-const hendleDelThuncRejected = (state, { payload }) => {
+const hendleDelThuncRejected = (_, { payload }) => {
   console.log(console.log('contact/delreject', payload));
 };
 
