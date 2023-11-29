@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/registration-user/static/js/main.cb48ced0.js",
+    "main.js": "/registration-user/static/js/main.207760b6.js",
     "index.html": "/registration-user/index.html",
-    "main.cb48ced0.js.map": "/registration-user/static/js/main.cb48ced0.js.map"
+    "main.207760b6.js.map": "/registration-user/static/js/main.207760b6.js.map"
   },
   "entrypoints": [
-    "static/js/main.cb48ced0.js"
+    "static/js/main.207760b6.js"
   ]
 }
