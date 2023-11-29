@@ -40,22 +40,14 @@ function SignUp() {
         ) {
           errors.email = 'Invalid email address';
         }
-
         if (!values.name) {
           errors.name = 'Required';
         } else if (!/..../i.test(values.name) && values.name.length < 4) {
           errors.name = 'Invalid name';
         }
-
-        // if (!values.name) {
-        //   errors.name = 'Required'
-        // } else if (!/^[AА-ZЮ0-9._%+-]/i.test(values.name)) {
-        //   errors.name = 'Invalid name';
-        // }
         return errors;
       }}
       validationSchema={Yap.object({
-        // name: Yap.string().min(4, 'must be more characters then 3').required(),
         password: Yap.string()
           .min(8, 'must be more characters then 7')
           .required(),
