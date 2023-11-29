@@ -1,8 +1,8 @@
 {
-  "name": "goit-react-hw-08-phonebook",
+  "name": "registration-user",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://evgeniy210191.github.io/goit-react-hw-08-phonebook/",
+  "homepage": "https://evgeniy210191.github.io/registration-user/",
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
     "@chakra-ui/theme": "^3.3.1",
