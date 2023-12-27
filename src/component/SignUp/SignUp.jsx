@@ -153,7 +153,6 @@ function SignUp() {
                 justifyContent="center"
                 textAlign="center"
                 height="200px"
-                width="500px"
                 borderRadius="7px"
               >
                 <AlertIcon boxSize="40px" mr={0} />
